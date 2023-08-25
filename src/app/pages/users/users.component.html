@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+
+<div class="outer">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="panel border bg-white">
+        <div class="panel-heading">
+          <h2 class="pt-3 fint-weight-bold">User List</h2>
+        </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>
+                <a
+                  (click)="updateStatus(user.id, user.status)"
+                  class="link-primary"
+                  >{{ user.status }}</a
+                >
+              </td>
+              <td>
+                <a
+                  (click)="updateRole(user.id, user.role)"
+                  class="link-primary"
+                >
+                  {{ user.role }}
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

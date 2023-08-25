@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+
+<div class="d-flex justify-content-start align-items-start">
+  <ul>
+    <li>
+      <a (click)="toggleAddUpdate()" class="link-primary"> ADD NEW </a>
+    </li>
+    <li *ngFor="let brand of brands">
+      <a (click)="toggleAddUpdate(brand.id)" class="link-primary">
+        {{ brand.name }}
+      </a>
+    </li>
+  </ul>
+
+  <div class="container">
+    <div class="panel border bg-white">
+      <div class="panel-heading">
+        <h2 class="pt-4 fint-weight-bold text-center">
+          {{ !selectedId ? "Add New Brand" : "Update Brand id: " + selectedId }}
+        </h2>
+      </div>
+
+      <div
+        class="alert alert-danger m-4"
+        role="alert"
+        *ngIf="errorMessage != ''"
+      >
+        {{ errorMessage }}
+      </div>
+
+      <form (submit)="submitForm($event)">
+        <div class="panel-body p-3">
+          <div class="form-group pt-3">
+            <label for="name">Name :</label>
+            <input
+              name="name"
+              type="text"
+              class="form-control"
+              [(ngModel)]="selectedName"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary btn-block mt-5 mb-3 w-100"
+          >
+            {{ !selectedId ? "Add" : "Update" }}
+          </button>
+
+          <div *ngIf="selectedId">
+            <button
+              type="button"
+              (click)="deleteBrand()"
+              class="btn btn-link btn-block mb-5 w-100 bg-white delBtn"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

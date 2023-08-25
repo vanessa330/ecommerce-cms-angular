@@ -1,0 +1,54 @@
+.container {
+  max-width: 38rem;
+}
+
+.panel {
+  margin-top: 2rem;
+  box-shadow: 10px 10px 80px rgb(218, 218, 218);
+  border-radius: 8px;
+}
+
+.delBtn {
+  color: darkred;
+}
+
+.delBtn:hover {
+  color: darkblue;
+}
+
+.backBtn {
+  color: grey;
+}
+
+.backBtn:hover {
+  color: darkblue;
+}
+
+img {
+  max-width: 100px;
+  max-height: 100px;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+img:hover {
+  max-width: 110px;
+  max-height: 110px;
+  cursor: pointer;
+}
+
+.color-container {
+  margin: 0.5rem;
+}
+
+
+.color-container:hover {
+  font-size: larger;
+  cursor: pointer;
+}
+
+.color-box {
+  display: inline-block;
+  border: 1px solid grey;
+  padding: 5px 5px;
+}

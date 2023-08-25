@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <div class="panel border bg-white">
+    <div class="panel-heading m-3">
+      <h2 class="fint-weight-bold">Product List</h2>
+
+      <div class="d-flex justify-content-between">
+        <a routerLink="/product/add">+ ADD</a>
+
+        <div>
+          <select id="brand" (change)="getProductByBrand($event)" class="m-2">
+            <option [value]="'all'">All Brands</option>
+            <option *ngFor="let brand of brands" [value]="brand.id">
+              {{ brand.name }}
+            </option>
+          </select>
+          <select
+            id="category"
+            (change)="getProductByCategory($event)"
+            class="m-2"
+          >
+            <option [value]="'all'">All Categories</option>
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Category</th>
+          <th>Brand</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let product of products"
+          (click)="onProductClick(product.id)"
+          class="product-row"
+        >
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.categoryName }}</td>
+          <td>{{ product.brandName }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

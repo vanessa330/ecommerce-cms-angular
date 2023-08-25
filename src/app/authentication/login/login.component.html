@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-center align-items-center">
+  <div class="container">
+    <div class="panel border bg-white">
+      <div class="panel-heading">
+        <h2 class="pt-4 fint-weight-bold text-center">
+          {{ isLogin ? "Login" : "Sign Up" }}
+        </h2>
+        <p
+          class="alert alert-danger m-3 text-center"
+          role="alert"
+          *ngIf="errorMessage != ''"
+        >
+          {{ errorMessage }}
+        </p>
+      </div>
+
+      <div class="panel-body p-4">
+        <form [formGroup]="formGroup" (ngSubmit)="submitForm()">
+          <div class="form-group pt-3">
+            <label for="email">Email address :</label>
+            <input
+              name="email"
+              type="email"
+              class="form-control"
+              formControlName="email"
+            />
+          </div>
+          <div class="form-group pt-3">
+            <label for="password">Password :</label>
+            <input
+              name="password"
+              type="password"
+              class="form-control"
+              formControlName="password"
+            />
+          </div>
+
+          <!-- Additional form fields for signup -->
+          <div class="form-group pt-3" *ngIf="!isLogin">
+            <label for="name">Name :</label>
+            <input
+              name="name"
+              type="text"
+              class="form-control"
+              formControlName="name"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mt-5 w-100">
+            {{ isLogin ? "Login" : "Sign Up" }}
+          </button>
+
+          <div class="text-center mt-3 p-4 text-muted">
+            {{ isLogin ? "Don't have account?" : "Already have an account?" }}
+            <a href="#" (click)="toggleLogin()">{{
+              isLogin ? "Sign Up" : "Login"
+            }}</a>
+          </div>
+
+          <div class="text-center mb-3" *ngIf="isLogin">
+            <a routerLink="/forgotPassword">Forgot Password?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

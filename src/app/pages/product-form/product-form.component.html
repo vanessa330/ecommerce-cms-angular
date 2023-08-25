@@ -1,0 +1,187 @@
+<app-navbar></app-navbar>
+
+<div class="d-flex justify-content-center align-items-center">
+  <div class="container">
+    <div class="panel border bg-white">
+      <div class="panel-heading">
+        <h2 class="pt-4 fint-weight-bold text-center">
+          {{
+            !selectedId ? "Add New Product" : "Update Product id: " + selectedId
+          }}
+        </h2>
+
+        <p
+          class="alert alert-danger m-4 text-center"
+          role="alert"
+          *ngIf="errorMessage != ''"
+        >
+          {{ errorMessage }}
+        </p>
+      </div>
+
+      <div class="panel-body">
+        <form (submit)="submitForm($event)">
+          <div class="form-group p-3">
+            <label for="name">Product Name :</label>
+            <input
+              name="name"
+              type="text"
+              class="form-control"
+              [(ngModel)]="selectedName"
+            />
+          </div>
+
+          <div class="d-flex flex-row">
+            <div class="form-group p-3 w-50">
+              <label for="price">Price :</label>
+              <input
+                name="price"
+                type="number"
+                class="form-control"
+                [(ngModel)]="selectedPrice"
+              />
+            </div>
+
+            <div class="form-group p-3 w-50">
+              <label for="quantity">Quantity :</label>
+              <input
+                name="quantity"
+                type="number"
+                class="form-control"
+                [(ngModel)]="selectedQuantity"
+              />
+            </div>
+          </div>
+
+          <div class="form-group p-3">
+            <label for="color">Color :</label>
+            <div class="d-flex justify-content-between">
+              <input
+                name="color"
+                type="text"
+                class="form-control"
+                [(ngModel)]="newColor"
+              />
+              <button
+                type="button"
+                class="btn btn-primary btn-block"
+                (click)="addColor()"
+              >
+                +
+              </button>
+            </div>
+
+            <div class="d-flex justify-content-start p-2">
+              <div
+                *ngFor="let color of selectedColor"
+                (click)="removeColor(color)"
+                class="color-container"
+              >
+                <span class="color-box" [style.background-color]="color"></span>
+                {{ color }}
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-row p-3">
+            <label for="category" class="p-2">Category :</label>
+            <select
+              [(ngModel)]="selectedCategory"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <option *ngFor="let category of categories" [value]="category.id">
+                {{ category.name }}
+              </option>
+            </select>
+
+            <label for="brand" class="p-2">Brand :</label>
+            <select
+              [(ngModel)]="selectedBrand"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <option *ngFor="let brand of brands" [value]="brand.id">
+                {{ brand.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group p-3">
+            <label for="material">Material :</label>
+            <input
+              name="material"
+              type="text"
+              class="form-control"
+              [(ngModel)]="selectedMaterial"
+            />
+          </div>
+
+          <div class="form-group p-3">
+            <label for="weight">Weight :</label>
+            <input
+              name="weight"
+              type="text"
+              class="form-control"
+              [(ngModel)]="selectedWeight"
+            />
+          </div>
+
+          <div class="form-group p-3">
+            <label for="dimensions">Dimensions :</label>
+            <input
+              name="dimensions"
+              type="text"
+              class="form-control"
+              [(ngModel)]="selectedDimensions"
+            />
+          </div>
+
+          <div
+            class="d-flex justify-content-between align-items-center m-3 p-3 bg-light"
+          >
+            <input type="file" #fileInput />
+            <button
+              type="button"
+              (click)="uploadImage(fileInput)"
+              class="btn btn-secondary btn-block w-20"
+            >
+              Upload
+            </button>
+          </div>
+
+          <div class="d-flex justify-content-start">
+            <img
+              alt="Image"
+              *ngFor="let imageId of selectedImageIds"
+              [src]="'http://localhost:8081/image/get/' + imageId"
+              (click)="deleteImage(imageId)"
+            />
+          </div>
+
+          <div class="p-3">
+            <button type="submit" class="btn btn-primary btn-block mb-4 w-100">
+              {{ !selectedId ? "Add" : "Update" }}
+            </button>
+
+            <div *ngIf="selectedId">
+              <button
+                type="button"
+                (click)="deleteProduct()"
+                class="btn btn-link btn-block w-100 bg-white delBtn"
+              >
+                Delete Product
+              </button>
+            </div>
+
+            <button
+              type="button"
+              routerLink="/products"
+              class="btn btn-link btn-block mt-3 mb-4 w-100 bg-white backBtn"
+            >
+              Back
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

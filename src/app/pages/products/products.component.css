@@ -1,0 +1,4 @@
+.product-row td:hover {
+  background-color: lightskyblue;
+  cursor: pointer;
+}

@@ -1,0 +1,19 @@
+a {
+  color: lightskyblue;
+}
+
+a:hover {
+  text-decoration: none;
+  color: darkblue;
+  cursor: pointer;
+}
+
+button {
+  background-color: darkblue;
+  border: none;
+}
+
+button:hover {
+  background-color: whitesmoke;
+  color: darkblue
+}

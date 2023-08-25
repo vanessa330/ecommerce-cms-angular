@@ -1,0 +1,19 @@
+.container {
+  height: 100vh;
+  min-height: 28rem;
+  max-width: 30rem;
+}
+
+.panel {
+  margin-top: 5rem;
+  box-shadow: 10px 10px 80px rgb(218, 218, 218);
+  border-radius: 8px;
+}
+
+.backBtn {
+  color: grey;
+}
+
+.backBtn:hover {
+  color: darkblue;
+}
